@@ -1,0 +1,46 @@
+{
+  "name": "aggregated-map",
+  "version": "0.0.0-semantic-release",
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "npm@11.10.0+sha512.8bc844e37892200305b98562f13c6c10849d10b3387c8cdaeb4d1a2e32746a79063cba9dd284cf28c26a01c3bf4169b7d3b31b4a5586cc970d6749463108073c",
+  "contributors": [
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ],
+  "license": "0BSD",
+  "scripts": {
+    "cover": "--overwrite-- c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
+    "test": "node --run test:ava",
+    "test:ava": "--overwrite-- ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs",
+    "docs": "--overwrite-- documentation readme --section=API ./src**/*.mjs",
+    "lint": "node --run lint:docs",
+    "lint:docs": "--overwrite-- documentation lint ./src**/*.mjs"
+  },
+  "devDependencies": {
+    "semantic-release": "^25.0.3",
+    "c8": "^10.1.3",
+    "ava": "^6.4.1",
+    "documentation": "^14.0.3"
+  },
+  "engines": {
+    "node": ">=24.13.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arlac77/aggregated-map.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arlac77/aggregated-map/issues"
+  },
+  "homepage": "https://github.com/arlac77/aggregated-map#readme",
+  "template": {
+    "inheritFrom": [
+      "arlac77/template-arlac77-github",
+      "arlac77/template-node-component"
+    ]
+  }
+}
