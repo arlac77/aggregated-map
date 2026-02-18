@@ -1,0 +1,9 @@
+/node_modules/**
+*.node
+bun.lockb
+build
+.DS_Store
+*.log
+*.dump
+.test
+.tmp

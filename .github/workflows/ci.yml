@@ -1,0 +1,61 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+      - next
+  pull_request:
+    branches:
+      - master
+      - next
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  test-node:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          - 24.13.1
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6.0.2
+      - name: prepare node
+        uses: actions/setup-node@v6.2.0
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install
+        run: npm ci
+      - name: test and coverage
+        run: npm run cover --if-present
+      - name: coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          flag-name: run-${{ matrix.test_number }}
+          path-to-lcov: build/coverage/lcov.info
+          parallel: true
+        continue-on-error: true
+  release:
+    needs:
+      - test-node
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6.0.2
+      - name: prepare node
+        uses: actions/setup-node@v6.2.0
+        with:
+          node-version: 24.13.1
+      - name: install
+        run: npm ci
+      - name: release
+        run: npx semantic-release
+        env:
+          CI: "true"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
