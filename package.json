@@ -1,6 +1,7 @@
 {
   "name": "aggregated-map",
   "version": "0.0.0-semantic-release",
+  "description": "aggregated Map out of several base Maps",
   "publishConfig": {
     "access": "public"
   },
