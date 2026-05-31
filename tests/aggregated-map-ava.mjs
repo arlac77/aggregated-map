@@ -23,4 +23,13 @@ test("map basics", t => {
   am.set("mak1", 3);
 
   t.deepEqual([...am.values()], [1, 3, 2]);
+
+  t.deepEqual(
+    [...am],
+    [
+      ["m1k1", 1],
+      ["mak1", 3],
+      ["m2k1", 2]
+    ]
+  );
 });
