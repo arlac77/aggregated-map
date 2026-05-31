@@ -1,5 +1,5 @@
 import test from "ava";
-import { AggregatedMap } from "../src/aggregated-map.mjs";
+import { AggregatedMap } from "aggregated-map";
 
 test("map basics", t => {
   const m1 = new Map([["m1k1", 1]]);

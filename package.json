@@ -5,6 +5,11 @@
     "access": "public"
   },
   "packageManager": "npm@11.13.0",
+  "exports": {
+    ".": {
+      "default": "./src/aggregated-map.mjs"
+    }
+  },
   "description": "aggregated Map out of several base maps",
   "keywords": [
     "aggregate",
