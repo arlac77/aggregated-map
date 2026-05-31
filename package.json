@@ -5,7 +5,7 @@
     "access": "public"
   },
   "packageManager": "npm@11.13.0",
-  "description": "aggregated Map out of several base Maps",
+  "description": "aggregated Map out of several base maps",
   "keywords": [
     "aggregate",
     "map"
