@@ -2,6 +2,10 @@
  * Dynamic aggregation of several Maps
  */
 export class AggregatedMap {
+  /**
+   *
+   * @param {Map<any,any>[]} sources
+   */
   constructor(sources) {
     this.sources = sources;
   }
@@ -45,12 +49,16 @@ export class AggregatedMap {
     }
   }
 
-  clear(key) {
-    this.sources[0].clear();
+  clear() {
+    for (const source of this.sources) {
+      source.clear();
+    }
   }
 
   delete(key) {
-    return this.sources[0].delete(key);
+    for (const source of this.sources) {
+      source.delete(key);
+    }
   }
 
   has(key) {

@@ -33,4 +33,8 @@ test("map basics", t => {
       ["m2k1", 2]
     ]
   );
+
+  am.delete("m2k1");
+
+  t.deepEqual([...am.values()], [1, 3]);
 });
