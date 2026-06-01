@@ -10,6 +10,19 @@
 
 # aggregated-map
 
+aggregated Map out of several base maps.
+
+
+```js
+import { AggregatedMap } from "aggregated-map";
+
+const am = new AggregatedMap([new Map([["m1",1]]), new Map([["m2",2]])]);
+
+am.get('m1'); // -> 1
+am.get('m2'); // -> 2
+
+```
+
 # API
 
 # install
