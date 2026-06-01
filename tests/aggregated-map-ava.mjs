@@ -8,6 +8,7 @@ test("map basics", t => {
   const am = new AggregatedMap([m1, m2]);
 
   t.is(am.size, 2);
+  t.is(`${am}`, "[object Map]");
 
   t.deepEqual(
     [...am.entries()],

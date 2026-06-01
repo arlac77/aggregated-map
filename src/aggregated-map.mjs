@@ -35,6 +35,10 @@ export class AggregatedMap {
     }
   }
 
+  get [Symbol.toStringTag]() {
+    return this.sources[0][Symbol.toStringTag];
+  }
+
   forEach(callbackfn, thisArg) {
     for (const [key, value] of this.entries()) {
       callbackfn.call(thisArg, value, key, this);
