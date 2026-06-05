@@ -56,9 +56,12 @@ export class AggregatedMap {
   }
 
   delete(key) {
+    let deleted = false;
     for (const source of this.sources) {
-      source.delete(key);
+      deleted ||= source.delete(key);
     }
+
+    return deleted;
   }
 
   has(key) {
