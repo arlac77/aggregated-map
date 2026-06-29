@@ -2,6 +2,10 @@
  * Dynamic aggregation of several Maps
  */
 export class AggregatedMap {
+  static get [Symbol.species]() {
+    return Map;
+  }
+
   /**
    *
    * @param {Map<any,any>[]} sources
