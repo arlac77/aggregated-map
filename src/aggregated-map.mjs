@@ -87,6 +87,31 @@ export class AggregatedMap {
     }
   }
 
+  getOrInsert(key, value) {
+    for (const source of this.sources) {
+      const value = source.get(key);
+      if (value !== undefined) {
+        return value;
+      }
+    }
+
+    this.set(key, value);
+    return value;
+  }
+
+  getOrInsertComputed(key, callback) {
+    for (const source of this.sources) {
+      const value = source.get(key);
+      if (value !== undefined) {
+        return value;
+      }
+    }
+
+    const value = callback(key);
+    this.set(key, value);
+    return value;
+  }
+
   get size() {
     return this.sources.reduce((a, c) => a + c.size, 0);
   }

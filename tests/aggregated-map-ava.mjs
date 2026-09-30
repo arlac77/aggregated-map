@@ -37,6 +37,18 @@ test("map basics", t => {
   t.is(am.delete("m2k1"), false);
 
   t.deepEqual([...am.values()], [1, 3]);
+
+  t.is(am.getOrInsert("mak1", "3x"), 3);
+  t.is(
+    am.getOrInsertComputed("mak1", key => "3x"),
+    3
+  );
+
+  t.is(am.getOrInsert("x1", "x1v"), "x1v");
+  t.is(
+    am.getOrInsertComputed("x2", key => "x2v"),
+    "x2v"
+  );
 });
 
 test("Array.from", t => {
